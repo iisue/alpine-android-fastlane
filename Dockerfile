@@ -1,6 +1,10 @@
 FROM anapsix/alpine-java:8_jdk
 LABEL maintainer "IISUE <sklee@iisue.com>"
 
+ARG VCS_REF
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="e.g. https://github.com/microscaling/microscaling"
+
 ENV LANG "en_US.UTF-8"
 ENV LANGUAGE "en_US.UTF-8"
 ENV LC_ALL "en_US.UTF-8"
