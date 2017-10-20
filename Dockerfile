@@ -30,8 +30,20 @@ RUN apk update && \
         openssh \
         g++ \
         make \
-    && gem install fastlane \
     && rm -rf /tmp/* /var/tmp/*
+
+RUN apk --no-cache add ca-certificates wget
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-bin-2.26-r0.apk
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-i18n-2.26-r0.apk
+
+RUN apk add glibc-2.26-r0.apk
+RUN apk add glibc-bin-2.26-r0.apk
+RUN apk add glibc-i18n-2.26-r0.apk
+RUN /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
+
+RUN gem install fastlane -v 2.62.0
 
 ADD https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip sdk-tools-linux.zip
 
