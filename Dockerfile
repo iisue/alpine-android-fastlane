@@ -11,7 +11,7 @@ ENV LC_ALL "en_US.UTF-8"
 
 ENV ANDROID_HOME "/android-sdk"
 ENV ANDROID_COMPILE_SDK "27"
-ENV ANDROID_BUILD_TOOLS "27.0.0"
+ENV ANDROID_BUILD_TOOLS "27.0.1"
 ENV ANDROID_SDK_TOOLS "3859397"
 ENV PATH "$PATH:${ANDROID_HOME}/platform-tools"
 
@@ -43,7 +43,7 @@ RUN apk add glibc-bin-2.26-r0.apk
 RUN apk add glibc-i18n-2.26-r0.apk
 RUN /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
 
-RUN gem install fastlane -v 2.62.0
+RUN gem install fastlane -v 2.66.2
 
 ADD https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip sdk-tools-linux.zip
 
