@@ -43,7 +43,7 @@ RUN apk add glibc-bin-2.26-r0.apk
 RUN apk add glibc-i18n-2.26-r0.apk
 RUN /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
 
-RUN gem install fastlane -v 2.66.2
+RUN gem install fastlane -v 2.131.0
 
 ADD https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip sdk-tools-linux.zip
 
